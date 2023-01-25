@@ -18,8 +18,16 @@ with open("05.in") as f:
     for line in b.split("\n"):
         m, f, t = [int(x) for x in line.split()[1::2]]
 
+        # Part 1
+        # for _ in range(m):
+        #     stacks[t].append(stacks[f].pop())
+
+        # Part 2
+        hold = []
         for _ in range(m):
-            stacks[t].append(stacks[f].pop())
+            hold.insert(0, stacks[f].pop())
+        for crate in hold:
+            stacks[t].append(crate)
 
     for key in sorted(stacks.keys()):
         print(stacks[key][-1], end='')
