@@ -1,0 +1,20 @@
+$ cd /
+$ ls
+dir a
+dir b
+$ cd a
+$ ls
+dir xxx
+$ cd xxx
+$ ls
+10 a.txt
+20 b.txt
+$ cd ..
+$ cd ..
+$ cd b
+$ ls
+dir xxx
+$ cd xxx
+$ ls
+30 c.txt
+40 d.txt
