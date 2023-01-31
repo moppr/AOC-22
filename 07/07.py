@@ -30,3 +30,10 @@ with open("07.in") as f:
         if s <= 100000:
             total += s
     print(total)
+
+    min_size = directories["/"] - 40000000
+    smallest = directories["/"]
+    for d in directories:
+        if min_size <= directories[d] < smallest:
+            smallest = directories[d]
+    print(smallest)
