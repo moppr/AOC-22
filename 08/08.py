@@ -31,3 +31,46 @@ with open("08.in") as f:
                 visible.add((r, c))
                 highest = forest[r][c]
     print(len(visible))
+
+    highest_score = -1
+    for house_r in range(max_r):
+        for house_c in range(max_c):
+            score = 1
+            current = forest[house_r][house_c]
+
+            # right
+            trees = 0
+            for c in range(house_c+1, max_c):
+                trees += 1
+                if forest[house_r][c] >= current:
+                    break
+            score *= trees
+
+            # left
+            trees = 0
+            for c in range(house_c-1, -1, -1):
+                trees += 1
+                if forest[house_r][c] >= current:
+                    break
+            score *= trees
+
+            # up
+            trees = 0
+            for r in range(house_r-1, -1, -1):
+                trees += 1
+                if forest[r][house_c] >= current:
+                    break
+            score *= trees
+
+            # down
+            trees = 0
+            for r in range(house_r+1, max_r):
+                trees += 1
+                if forest[r][house_c] >= current:
+                    break
+            score *= trees
+
+            if score > highest_score:
+                highest_score = score
+
+    print(highest_score)
