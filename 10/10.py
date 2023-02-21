@@ -10,6 +10,15 @@ def draw(cyc_no, x_val):
     return result
 
 
+def do_cycle():
+    global cycle
+    global signal_sum
+    global image
+    cycle += 1
+    signal_sum += signal(cycle, x)
+    image += draw(cycle, x)
+
+
 with open("10.in") as f:
     x = 1
     cycle = 0
@@ -23,16 +32,10 @@ with open("10.in") as f:
             instr, val = line
 
         if instr == "noop":
-            cycle += 1
-            signal_sum += signal(cycle, x)
-            image += draw(cycle, x)
+            do_cycle()
         elif instr == "addx":
-            cycle += 1
-            signal_sum += signal(cycle, x)
-            image += draw(cycle, x)
-            cycle += 1
-            signal_sum += signal(cycle, x)
-            image += draw(cycle, x)
+            for _ in range(2):
+                do_cycle()
             x += int(val)
 
     print(signal_sum)
